@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipe App</title>
+
+    <style>
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+        .close:hover {
+            background-color: red;
+        }
+        .box {
+            background-color: #e3f2fd;
+            padding: 10px 10px;
+            color: white;
+            text-align: center;
+        }
+        .box:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        input {
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+        .add {
+            padding: 10px;
+            background: #FFD700;
+            color: black;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        ul li:hover {
+            background: #ddd;
+        }
+        ul li.checked {
+            background: pink;
+            color: black;
+            text-decoration: line-through;
+        }
+        ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: black;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- logo leads to home page-->
+<a href="home.html"><img src="img/logo.PNG" align="middle" class="mx-auto d-block" width="80" height="30"/></a>
+
+<div class="box">
+    <!-- grocery list title-->
+    <h2 style="color: black">Grocery List</h2>
+
+    <!-- food items title-->
+    <input type="text" id="myInput" required placeholder="Food items">
+
+    <!--add list button -->
+    <span onclick="newFood()" class="add">Add List</span>
+</div>
+
+<!-- example list for users-->
+<ul id="myUL">
+    <li>Egss</li>
+    <li class="checked">Salt</li>
+    <li>Oil</li>
+    <li class="checked">Milk</li>
+</ul>
+
+<script>
+    //functionality for grocery list
+    //(used some information from website for help)
+    //Reference: https://stackoverflow.com/questions/41916881/how-to-make-a-simple-to-do-list-type-thing
+
+    //delete food from list
+    var foodItem = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < foodItem.length; i++) {
+        var span = document.createElement("SPAN");
+        var input = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(input);
+        foodItem[i].appendChild(span);
+    }
+
+    //check mark for complete food item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function (ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+
+    //adding new food to list
+    function newFood() {
+        var li = document.createElement("li");
+        var addItem = document.getElementById("myInput").value;
+        var t = document.createTextNode(addItem);
+        li.appendChild(t);
+
+        //error checking for missing food item
+        if (addItem === '') {
+            ("");
+        } else {
+            document.getElementById("myUL").appendChild(li);
+        }
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+        document.getElementById("myInput").value = "";
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+    }
+
+    //hide food item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+
+    //indexedDB used to store information from list
+    food.indexedDB = {};
+    food.indexedDB.db = null;
+    food.indexedDB.onerror = function (e) {
+        console.log(e);
+    };
+
+    //call list storage
+    food.indexedDB.open = function () {
+        var version = 1;
+        var request = indexedDB.open("list", version);
+        request.onupgradeneeded = function (e) {
+            var db = e.target.result;
+            e.target.transaction.onerror = food.indexedDB.onerror;
+            if (db.objectStoreNames.contains("list")) {
+                db.deleteObjectStore("list");
+            }
+        };
+        request.onsuccess = function (e) {
+            food.indexedDB.db = e.target.result;
+        };
+        request.onerror = food.indexedDB.onerror;
+    };
+</script>
+
+</body>
+</html>

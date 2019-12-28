@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipe App</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <style>
+        body {
+            height: 100%;
+        }
+        .container {
+            height: auto;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        h1 {
+            text-align: center;
+            color: red;
+            font-family: 'audrey';
+        }
+        nav a:hover {
+            background-color: white;
+        }
+        /* recipes*/
+        h4 {
+            font-size: 2.5vw;
+        }
+        .container-fluid {
+            padding-top: 20px;
+        }
+        .md-form {
+            padding: 10px;
+        }
+        input {
+            padding: 5px;
+        }
+        .list-group-item {
+            padding: 0px;
+            margin-bottom: 2px;
+        }
+        li.list-group-item:hover {
+            color: #fff;
+            background-color: grey;
+            border: 0px;
+            margin: 5px;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        /* footer*/
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+            height: 120px;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        h2 {
+            text-align: center;
+            font-family: 'audrey';
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- scroll bar -->
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+
+<!-- top navigation bar begins -->
+<nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: #e3f2fd">
+    <a class="navbar-brand" style="font-weight: bold; font-style: italic; color:#00bff3; font-size: 27px"
+       href="home.html">
+        <img src="img/logo.PNG" width="80" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    <span class="name pull-left" style="color:red; font-size: 27px; font-family: 'audrey'">Create Recipes</span>
+
+    <!-- hamburger button to the right -->
+    <button type="button" class="navbar-toggler ml-auto hidden-sm-up float-xs-right" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- all items need to be in collapse class for all the links -->
+    <div class="collapse navbar-collapse" style="font-size: 20px" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <!-- dropdown-->
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Get Started</a>
+                <!-- action for dropdown item classes / dropdown menu-->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="view-recipe.html">Recipes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="new.html">Create Recipes</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<!-- end of top navigation bar-->
+<div class="container-fluid">
+    <section class="mb-4">
+        <!--Section heading-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-9 mb-md-0 mb-5">
+                <form id="create-recipe-form" enctype="multipart/form-data">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <label for="subject" class="">Recipe Name</label>
+                                <!-- example message to users-->
+                                <input type="text" id="recipe_name" name="recipe_name" required placeholder="Delicious Chicken Rice" class="form-control">
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <label for="file" class="">Recipe Image</label>
+                                <input type="file" id="recipe_image" name="recipe_image" required class="form-control-file">
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <label for="ingredients" class="">Recipe Ingredients</label>
+                                <!-- example message to users-->
+                                <input type="text" id="ingredients" name="ingredients" required placeholder="carrots, oranges, salt" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <label for="message">Preparation Instruction</label>
+                                <!-- example message to users-->
+                                <textarea type="text" id="message" name="message" required rows="4" placeholder="Boil 100ml volume of water first ..." class="form-control md-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                    <div class="text-center text-md-left md-form">
+                        <input type="reset" class="btn btn-primary" value="Clear All">
+                        <button type="submit" class="btn btn-danger">Add Recipe</button>
+                    </div>
+
+                </form>
+            </div>
+            <!--Grid column-->
+
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <!-- Recipe list title -->
+        <h2> Recipe List </h2>
+        <ul class="list-group" id="recipe-list">
+        </ul>
+    </section>
+</div>
+
+<!-- footer begins-->
+<div class="row">
+    <div class="column" style="background-color:#e3f2fd;">
+        <h2> Services </h2>
+    </div>
+    <div class="column" style="background-color:#e3f2fd;">
+
+        <li>
+            <a href="home.html" style="font-size:18px; color: black">Home</a>
+        </li>
+
+        <li>
+            <a href="list.html" style="font-size:18px; color: black">Grocery List</a>
+        </li>
+
+        <li>
+            <a href="new.html" style="font-size:18px; color: black">Create Recipes</a>
+        </li>
+    </div>
+
+    <div class="column" style="background-color:#e3f2fd;">
+        <h2> Support </h2>
+    </div>
+    <div class="column" style="background-color:#e3f2fd;">
+
+        <li>
+            <a href="contact.html" style="font-size:18px; color: black">Contact</a>
+        </li>
+    </div>
+</div>
+<!-- footer ends-->
+
+<!-- import fetaured needed for database and storage -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-storage.js"></script>
+<!-- initialize the SDK after all desired features loaded -->
+<script src="./assets/js/firebase-init.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+<script defer src="./assets/js/main.js"></script><!-- Funtions are in file-->
+
+</body>
+</html>
